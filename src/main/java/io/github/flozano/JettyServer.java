@@ -36,11 +36,8 @@ public class JettyServer implements AutoCloseable {
 
 		HttpConnectionFactory httpFactory = buildHttpConnectionFactory(config);
 		ServerConnector connector = new ServerConnector(server, httpFactory);
-		//connector.setInheritChannel(config.isInheritChannel());
 		connector.setPort(port);
 		connector.setHost(ip);
-		//connector.setAcceptQueueSize(config.getAcceptQueueSize());
-		//connector.setIdleTimeout(config.getIdleTimeout());
 		server.addConnector(connector);
 
 		contextHandler = new ServletContextHandler(ServletContextHandler.NO_SESSIONS);

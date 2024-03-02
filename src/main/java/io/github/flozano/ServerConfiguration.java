@@ -13,12 +13,6 @@ public class ServerConfiguration {
 
 	private int port = 8089;
 
-	private boolean inheritChannel = false;
-
-	private int acceptQueueSize = 0;
-
-	private long idleTimeout = TimeUnit.SECONDS.toMillis(120);
-
 	private long gracefulStopTimeout = TimeUnit.SECONDS.toMillis(20);
 
 	private String name = "testing";
@@ -77,29 +71,6 @@ public class ServerConfiguration {
 		this.port = port;
 	}
 
-	public boolean isInheritChannel() {
-		return inheritChannel;
-	}
-
-	public void setInheritChannel(boolean inheritChannel) {
-		this.inheritChannel = inheritChannel;
-	}
-
-	public int getAcceptQueueSize() {
-		return acceptQueueSize;
-	}
-
-	public void setAcceptQueueSize(int acceptQueueSize) {
-		this.acceptQueueSize = acceptQueueSize;
-	}
-
-	public long getIdleTimeout() {
-		return idleTimeout;
-	}
-
-	public void setIdleTimeout(long idleTimeout) {
-		this.idleTimeout = idleTimeout;
-	}
 
 	public long getGracefulStopTimeout() {
 		return gracefulStopTimeout;

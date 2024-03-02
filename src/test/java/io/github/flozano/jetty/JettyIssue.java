@@ -9,6 +9,8 @@ import java.net.http.HttpResponse;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import io.github.flozano.JettyServer;
 import io.github.flozano.MirrorServlet;
@@ -16,10 +18,11 @@ import io.github.flozano.ServerConfiguration;
 
 public class JettyIssue {
 
-	@Test
-	public void test() throws IOException, InterruptedException {
+	@ParameterizedTest
+	@ValueSource(ints = { 1024, 8192, 1024 * 1024, 2 * 1024 * 1024 })
+	public void test(int copyBufferSize) throws IOException, InterruptedException {
 		try (JettyServer server = new JettyServer(new ServerConfiguration())) {
-			server.configureServlet("mirror", new MirrorServlet(1024));
+			server.configureServlet("mirror", new MirrorServlet(copyBufferSize));
 			server.start();
 
 			try (HttpClient client = HttpClient.newHttpClient()) {
