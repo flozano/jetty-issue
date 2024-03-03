@@ -50,6 +50,7 @@ public class MirrorServlet extends HttpServlet {
 		long count = 0;
 		int n;
 		while (EOF != (n = inputStream.read(buffer))) {
+			LOGGER.info("Read {} bytes", n);
 			outputStream.write(buffer, 0, n);
 			count += n;
 			LOGGER.info("Copied {} bytes (count={})", n, count);

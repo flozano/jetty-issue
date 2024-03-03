@@ -21,6 +21,18 @@ public class ServerConfiguration {
 
 	private int requestHeadersSize = 64 * 1024;
 
+	private int outputBufferSize = 32 * 1024;
+
+	private long idleTimeout = 5_000;
+
+	public void setIdleTimeout(long idleTimeout) {
+		this.idleTimeout = idleTimeout;
+	}
+
+	public long getIdleTimeout() {
+		return idleTimeout;
+	}
+
 	private String cacheControl =  "max-age=0, no-cache, no-store";
 
 	public String getCacheControl() {
@@ -102,5 +114,13 @@ public class ServerConfiguration {
 
 	public void setRequestHeadersSize(int requestHeadersSize) {
 		this.requestHeadersSize = requestHeadersSize;
+	}
+
+	public int getOutputBufferSize() {
+		return outputBufferSize;
+	}
+
+	public void setOutputBufferSize(int outputBufferSize) {
+		this.outputBufferSize = outputBufferSize;
 	}
 }

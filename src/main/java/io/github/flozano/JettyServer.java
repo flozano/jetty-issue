@@ -38,6 +38,7 @@ public class JettyServer implements AutoCloseable {
 		ServerConnector connector = new ServerConnector(server, httpFactory);
 		connector.setPort(port);
 		connector.setHost(ip);
+		connector.setIdleTimeout(config.getIdleTimeout());
 		server.addConnector(connector);
 
 		contextHandler = new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
@@ -66,6 +67,7 @@ public class JettyServer implements AutoCloseable {
 		HttpConfiguration httpConfig = new HttpConfiguration();
 		httpConfig.setResponseHeaderSize(config.getResponseHeadersSize());
 		httpConfig.setRequestHeaderSize(config.getRequestHeadersSize());
+		httpConfig.setOutputBufferSize(config.getOutputBufferSize());
 		return httpConfig;
 	}
 
