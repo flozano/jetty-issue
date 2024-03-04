@@ -11,13 +11,16 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
 dependencies {
     implementation platform('org.eclipse.jetty.ee10:jetty-ee10-bom:12.0.6')
+    implementation platform('org.eclipse.jetty:jetty-bom:12.0.6')
+
     implementation 'org.eclipse.jetty.ee10:jetty-ee10-servlet'
+    implementation 'org.eclipse.jetty:jetty-client:12.0.6'
     implementation 'commons-io:commons-io:2.15.1'
     implementation 'org.apache.commons:commons-lang3:3.14.0'
     implementation 'ch.qos.logback:logback-classic:1.5.1'
@@ -29,4 +32,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'jdk.net.usePlainSocketImpl', 'true'
 }

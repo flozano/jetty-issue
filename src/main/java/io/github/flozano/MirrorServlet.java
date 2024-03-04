@@ -14,6 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class MirrorServlet extends HttpServlet {
+
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(MirrorServlet.class);
 	private final int bufferSize;
 
